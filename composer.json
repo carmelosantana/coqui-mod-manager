@@ -23,7 +23,7 @@
         "symfony/http-client": "^7.4 || ^8.0"
     },
     "require-dev": {
-        "carmelosantana/php-agents": "^0.12 || ^0.13",
+        "carmelosantana/php-agents": ">=0.14",
         "pestphp/pest": "^3.0",
         "phpstan/phpstan": "^2.0"
     },
