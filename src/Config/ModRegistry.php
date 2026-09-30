@@ -20,6 +20,7 @@ final class ModRegistry
     * or be allowed to disable/remove via the mod manager.
      */
     private const array EXCLUDED_PACKAGES = [
+        'carmelosantana/coqui-mod-manager',
         'coquibot/coqui-toolkit-mod-manager',
         'coquibot/coqui-toolkit-composer',
         'coquibot/coqui-toolkit-packagist',

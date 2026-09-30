@@ -1,5 +1,5 @@
 {
-    "name": "coquibot/coqui-toolkit-mod-manager",
+    "name": "carmelosantana/coqui-mod-manager",
     "description": "Coqui Mods manager integration — discover, install, and manage mods from agentcoqui.com",
     "type": "library",
     "license": "MIT",
