@@ -5,7 +5,7 @@ Coqui Mods manager toolkit — browse, install, update, and manage skills and to
 ## Installation
 
 ```bash
-composer require coquibot/coqui-toolkit-mod-manager
+composer require carmelosantana/coqui-mod-manager
 ```
 
 The toolkit is auto-discovered by Coqui via `extra.php-agents.toolkits` in `composer.json`. No additional configuration needed.

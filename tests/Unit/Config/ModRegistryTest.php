@@ -26,6 +26,11 @@ test('isExcluded returns true for core packages', function () {
         ->and(ModRegistry::isExcluded('carmelosantana/php-agents'))->toBeTrue();
 });
 
+test('isExcluded protects the mod manager under its renamed package name', function () {
+    expect(ModRegistry::isExcluded('carmelosantana/coqui-mod-manager'))->toBeTrue()
+        ->and(ModRegistry::isExcluded('coquibot/coqui-toolkit-mod-manager'))->toBeTrue();
+});
+
 test('isExcluded is case insensitive', function () {
     expect(ModRegistry::isExcluded('CoquiBot/Coqui-Toolkit-Mod-Manager'))->toBeTrue()
         ->and(ModRegistry::isExcluded('CARMELOSANTANA/PHP-AGENTS'))->toBeTrue();
@@ -120,6 +125,27 @@ test('looksLikeCoquiPackage matches coqui-toolkit- anywhere', function () {
 test('looksLikeCoquiPackage matches coqui-mod- anywhere', function () {
     expect(ModRegistry::looksLikeCoquiPackage('acme/coqui-mod-admin'))->toBeTrue();
 });
+
+test('looksLikeCoquiPackage matches renamed carmelosantana/coqui-* packages', function (string $package) {
+    expect(ModRegistry::looksLikeCoquiPackage($package))->toBeTrue();
+})->with([
+    'carmelosantana/coqui-images',
+    'carmelosantana/coqui-mcp-client',
+    'carmelosantana/coqui-backstory',
+    'carmelosantana/coqui-webhooks',
+    'carmelosantana/coqui-brave-search',
+    'carmelosantana/coqui-browser',
+    'carmelosantana/coqui-mod-publish',
+]);
+
+test('looksLikeCoquiPackage ignores core and non-coqui carmelosantana packages', function (string $package) {
+    expect(ModRegistry::looksLikeCoquiPackage($package))->toBeFalse();
+})->with([
+    'carmelosantana/coqui',
+    'carmelosantana/php-agents',
+    'carmelosantana/php-pathhelper',
+    'carmelosantana/foo',
+]);
 
 test('looksLikeCoquiPackage is case insensitive', function () {
     expect(ModRegistry::looksLikeCoquiPackage('CoquiBot/Something'))->toBeTrue()

@@ -20,6 +20,7 @@ final class ModRegistry
     * or be allowed to disable/remove via the mod manager.
      */
     private const array EXCLUDED_PACKAGES = [
+        'carmelosantana/coqui-mod-manager',
         'coquibot/coqui-toolkit-mod-manager',
         'coquibot/coqui-toolkit-composer',
         'coquibot/coqui-toolkit-packagist',
@@ -60,6 +61,7 @@ final class ModRegistry
         $lower = strtolower($package);
 
         return str_starts_with($lower, 'coquibot/')
+            || str_starts_with($lower, 'carmelosantana/coqui-')
             || str_starts_with($lower, 'coqui-bot/')
             || str_contains($lower, 'coqui-toolkit-')
             || str_contains($lower, 'coqui-mod-');
