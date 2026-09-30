@@ -61,6 +61,7 @@ final class ModRegistry
         $lower = strtolower($package);
 
         return str_starts_with($lower, 'coquibot/')
+            || str_starts_with($lower, 'carmelosantana/coqui-')
             || str_starts_with($lower, 'coqui-bot/')
             || str_contains($lower, 'coqui-toolkit-')
             || str_contains($lower, 'coqui-mod-');

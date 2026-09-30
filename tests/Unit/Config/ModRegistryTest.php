@@ -126,6 +126,27 @@ test('looksLikeCoquiPackage matches coqui-mod- anywhere', function () {
     expect(ModRegistry::looksLikeCoquiPackage('acme/coqui-mod-admin'))->toBeTrue();
 });
 
+test('looksLikeCoquiPackage matches renamed carmelosantana/coqui-* packages', function (string $package) {
+    expect(ModRegistry::looksLikeCoquiPackage($package))->toBeTrue();
+})->with([
+    'carmelosantana/coqui-images',
+    'carmelosantana/coqui-mcp-client',
+    'carmelosantana/coqui-backstory',
+    'carmelosantana/coqui-webhooks',
+    'carmelosantana/coqui-brave-search',
+    'carmelosantana/coqui-browser',
+    'carmelosantana/coqui-mod-publish',
+]);
+
+test('looksLikeCoquiPackage ignores core and non-coqui carmelosantana packages', function (string $package) {
+    expect(ModRegistry::looksLikeCoquiPackage($package))->toBeFalse();
+})->with([
+    'carmelosantana/coqui',
+    'carmelosantana/php-agents',
+    'carmelosantana/php-pathhelper',
+    'carmelosantana/foo',
+]);
+
 test('looksLikeCoquiPackage is case insensitive', function () {
     expect(ModRegistry::looksLikeCoquiPackage('CoquiBot/Something'))->toBeTrue()
         ->and(ModRegistry::looksLikeCoquiPackage('COQUIBOT/TEST'))->toBeTrue();
